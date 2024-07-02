@@ -1,0 +1,238 @@
+CREATE DATABASE Alfred_Expenses;
+
+SHOW DATABASES;
+Database
+b'project_expenses'
+alfred_expenses
+information_schema
+ngahu_expenses
+mysql
+performance_schema
+project_expense
+project_expenses
+
+USE Alfred_expenses;
+
+CREATE TABLE Expenses (
+Date DATE,
+Expense_ID INT AUTO_INCREMENT PRIMARY KEY,
+Category varchar(100) NOT NULL,
+Amount INT);
+
+INSERT INTO Expenses (Date, Expense_ID, Category, Amount) VALUES
+('2024-01-01','111','Rent','50'),
+('2024-01-02','112','Food','10'),
+('2024-01-03','113','fee','85'),
+('2024-01-04','114','cloth','15'),
+('2024-01-05','115','paste','2'),
+('2024-01-06','116','groceries','3'),
+('2024-01-07','117','supplies','18'),
+('2024-01-08','118','phone','11'),
+('2024-01-09','119','airtime','1'),
+('2024-01-10','120','Elecricity','7'),
+('2024-01-11','121','cutlery','5'),
+('2024-01-12','122','transport','2'),
+('2024-01-13','123','stationery','21'),
+('2024-01-14','124','debts','50'),
+('2024_01-15','125','entertainment','34');
+
+
+QUESTION ONE
+SELECT * FROM Expenses;
+Date      Expense_ID  Category        Amount
+2024-01-01       111          Rent        50
+2024-01-02       112          Food        10
+2024-01-03       113           fee        85
+2024-01-04       114         cloth        15
+2024-01-05       115         paste         2
+2024-01-06       116     groceries         3
+2024-01-07       117      supplies        18
+2024-01-08       118         phone        11
+2024-01-09       119       airtime         1
+2024-01-10       120    Elecricity         7
+2024-01-11       121       cutlery         5
+2024-01-12       122     transport         2
+2024-01-13       123    stationery        21
+2024-01-14       124         debts        50
+2024-01-15       125 entertainment        34
+
+
+QUESTION TWO
+SELECT Date, Category, Amount FROM Expenses;
+Date               Category               Amount
+2024-01-01             Rent                   50
+2024-01-02             Food                   10
+2024-01-03              fee                   85
+2024-01-04            cloth                   15
+2024-01-05            paste                    2
+2024-01-06        groceries                    3
+2024-01-07         supplies                   18
+2024-01-08            phone                   11
+2024-01-09          airtime                    1
+2024-01-10       Elecricity                    7
+2024-01-11          cutlery                    5
+2024-01-12        transport                    2
+2024-01-13       stationery                   21
+2024-01-14            debts                   50
+2024-01-15    entertainment                   34
+
+
+QUESTION THREE
+  SELECT Category FROM Expenses
+  WHERE Date BETWEEN '2024-01-14' AND '2024-01-19';
+
+     Category
+        debts
+entertainment
+
+QUESTION FOUR
+ SELECT  Date, Category, Amount FROM Expenses
+ WHERE Category='entertainment';
+
+      Date         Category Amount
+2024-01-15    entertainment     34
+
+
+QUESTION FIVE
+  SELECT Date, Category, Amount FROM Expenses
+  WHERE Amount > 15;
+      Date      Category  Amount
+2024-01-01          Rent      50
+2024-01-03           fee      85
+2024-01-07      supplies      18
+2024-01-13    stationery      21
+2024-01-14         debts      50
+2024-01-15 entertainment      34
+
+
+QUESTION SIX
+  SELECT Date, Category, Amount FROM Expenses
+  WHERE Amount > 5 AND Category='food';
+
+      Date      Category Amount
+2024-01-02          Food     10
+
+
+QUESTION SEVEN
+  SELECT  Date, Category, Amount FROM Expenses
+  WHERE Category='entertainment' OR Category='fee';
+
+      Date       Category   Amount
+2024-01-03            fee       85
+2024-01-15  entertainment       34
+
+
+QUESTION EIGHT
+  SELECT Date, Category, Amount FROM Expenses
+  WHERE NOT Category='Rent';
+
+      Date     Category   Amount
+2024-01-02         Food       10
+2024-01-03          fee       85
+2024-01-04        cloth       15
+2024-01-05        paste        2
+2024-01-06    groceries        3
+2024-01-07     supplies       18
+2024-01-08        phone       11
+2024-01-09      airtime        1
+2024-01-10   Elecricity        7
+2024-01-11      cutlery        5
+2024-01-12    transport        2
+2024-01-13   stationery       21
+2024-01-14        debts       50
+2024-01-15entertainment       34
+
+
+QUESTION NINE
+  SELECT Date, Category, Amount FROM Expenses
+  ORDER BY Amount DESC;
+
+      Date      Category    Amount
+2024-01-03           fee        85
+2024-01-01          Rent        50
+2024-01-14         debts        50
+2024-01-15 entertainment        34
+2024-01-13    stationery        21
+2024-01-07      supplies        18
+2024-01-04         cloth        15
+2024-01-08         phone        11
+2024-01-02          Food        10
+2024-01-10    Elecricity         7
+2024-01-11       cutlery         5
+2024-01-06     groceries         3
+2024-01-05         paste         2
+2024-01-12     transport         2
+2024-01-09       airtime         1
+
+
+QUESTION TEN
+  SELECT Date, Category, Amount FROM Expenses
+  ORDER BY Date DESC;
+
+      Date      Category    Amount
+2024-01-15 entertainment        34
+2024-01-14         debts        50
+2024-01-13    stationery        21
+2024-01-12     transport         2
+2024-01-11       cutlery         5
+2024-01-10    Elecricity         7
+2024-01-09       airtime         1
+2024-01-08         phone        11
+2024-01-07      supplies        18
+2024-01-06     groceries         3
+2024-01-05         paste         2
+2024-01-04         cloth        15
+2024-01-03           fee        85
+2024-01-02          Food        10
+2024-01-01          Rent        50
+
+
+  SELECT Date, Category, Amount FROM Expenses
+  ORDER BY Category ASC;
+
+
+      Date       Category    Amount
+2024-01-09        airtime         1
+2024-01-04          cloth        15
+2024-01-11        cutlery         5
+2024-01-14          debts        50
+2024-01-10     Elecricity         7
+2024-01-15  entertainment        34
+2024-01-03            fee        85
+2024-01-02           Food        10
+2024-01-06      groceries         3
+2024-01-05          paste         2
+2024-01-08          phone        11
+2024-01-01           Rent        50
+2024-01-13     stationery        21
+2024-01-07       supplies        18
+2024-01-12      transport         2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
